@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>NWTIS konfiguracija</comment>
+<entry key="server.database">jdbc:mysql://localhost/</entry>
+<entry key="admin.username">nwtis_admin</entry>
+<entry key="admin.password">nwtis_foi</entry>
+<entry key="admin.database">mysql</entry>
+<entry key="user.username">nwtis_g1</entry>
+<entry key="user.password">g1_nwtis</entry>
+<entry key="user.database">nwtis_mpianec_bp_1</entry>
+<entry key="driver.database.odbc">sun.jdbc.odbc.JdbcOdbcDriver</entry>
+<entry key="jdbc.mysql">com.mysql.jdbc.Driver</entry>
+<entry key="jdbc.derby">org.apache.derby.jdbc.ClientDriver</entry>
+<entry key="LocationIQ.token">a42c5ae116ce9d</entry>
+<entry key="OpenWeatherMap.apikey">a355f9298f070b173273fde500e2bcf4</entry>
+<entry key="OpenSkyNetwork.korisnik">mpianec</entry>
+<entry key="OpenSkyNetwork.lozinka">grejtsejtan</entry>
+<entry key="preuzimanje.ciklus">2</entry>
+<entry key="preuzimanje.pocetak">72</entry>
+<entry key="preuzimanje.trajanje">5</entry>
+<entry key="izbornik.brojRedaka">10</entry>
+<entry key="tablica.brojRedaka">7</entry>
+<entry key="port">8000</entry>
+<entry key="adresa">localhost</entry>
+<entry key="datoteka">konfJson.json</entry>
+</properties>

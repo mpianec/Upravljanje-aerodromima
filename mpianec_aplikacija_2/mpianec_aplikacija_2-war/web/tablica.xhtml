@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"           
+      xmlns:p="http://primefaces.org/ui">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{prijavaRegistracija.autentificiraj()}"/>
+    </f:metadata>
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./predložak.xhtml">
+            <ui:define name="naslov">              
+            </ui:define>
+            <ui:define name="top">
+            </ui:define>
+            <ui:define name="content">
+                <h:form id="reg">
+                    <h:outputLabel value="#{p['tablica.azuriraj']}" /><br></br>
+                    <h:outputLabel value="#{p['tablica.ime']}"/>
+                    <h:inputText value="#{prijavaRegistracija.ime}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['tablica.prezime']}"/>
+                    <h:inputText value="#{prijavaRegistracija.prezime}"></h:inputText><br></br>
+                    <h:outputLabel  value="#{p['tablica.email']}"/>
+                    <h:inputText value="#{prijavaRegistracija.email}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['tablica.lozinka']}"/>
+                    <h:inputText value="#{prijavaRegistracija.lozinkaReg}"></h:inputText><br></br>
+                    <h:commandButton  value="#{p['tablica.azuriraj']}" action="#{prijavaRegistracija.azuriraj()}"></h:commandButton>
+                    <br></br>
+                    <h:outputLabel value="#{prijavaRegistracija.poruka}"/>
+                    <br></br>
+                    <h:commandButton  value="#{p['tablica.podaci.korisnika']}" action="#{prijavaRegistracija.prikaziKorisnike()}"><f:ajax execute="@form" render="tablica"/></h:commandButton><br></br>            
+                </h:form>
+                <p:dataTable id="tablica" value="#{prijavaRegistracija.korisnici}" var="korisnik" 
+                             paginator="true" 
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}  " 
+                             rowsPerPageTemplate="5,10,15" 
+                             rows="5">
+                    <p:column>
+                        <f:facet name="header">Korisničko ime</f:facet>
+                            #{korisnik.korime}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Ime</f:facet>
+                            #{korisnik.ime}
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">Prezime</f:facet>
+                            #{korisnik.prezime}
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

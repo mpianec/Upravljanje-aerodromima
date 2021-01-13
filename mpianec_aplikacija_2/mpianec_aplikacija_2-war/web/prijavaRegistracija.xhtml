@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"           
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Prijava i registracija</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./predložak.xhtml">
+            <ui:define name="naslov">              
+            </ui:define>
+            <ui:define name="top">
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <h:outputLabel value="#{p['prijavaRegistracija.prijava']}" /><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.korime']}" />
+                    <h:inputText value="#{prijavaRegistracija.korimePri}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.lozinka']}" />
+                    <h:inputText value="#{prijavaRegistracija.lozinkaPri}"></h:inputText><br></br>
+                    <h:commandButton value="#{p['prijavaRegistracija.prijava']}" action="#{prijavaRegistracija.prijavi()}"></h:commandButton>
+                </h:form>
+                <br></br>
+                <h:form id="reg">
+                    <h:outputLabel value="#{p['prijavaRegistracija.registracija']}"/>
+                    <h:outputLabel value="#{p['prijavaRegistracija.ime']}" />
+                    <h:inputText value="#{prijavaRegistracija.ime}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.prezime']}" />
+                    <h:inputText value="#{prijavaRegistracija.prezime}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.korime']}" />
+                    <h:inputText value="#{prijavaRegistracija.korimeReg}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.email']}"/>
+                    <h:inputText value="#{prijavaRegistracija.email}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.lozinka']}" />
+                    <h:inputText value="#{prijavaRegistracija.lozinkaReg}"></h:inputText><br></br>
+                    <h:outputLabel value="#{p['prijavaRegistracija.ponovljenaLozinka']}"/>
+                    <h:inputText value="#{prijavaRegistracija.ponovljenaLoz}"></h:inputText><br></br>
+                    <h:commandButton value="#{p['prijavaRegistracija.gumb.registriraj']}" action="#{prijavaRegistracija.registriraj()}"><f:ajax execute="@form" render="reg"/></h:commandButton>
+                    <br></br>
+                    <h:outputLabel value="#{prijavaRegistracija.poruka}"/>
+                    <br></br>                      
+                </h:form>      
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

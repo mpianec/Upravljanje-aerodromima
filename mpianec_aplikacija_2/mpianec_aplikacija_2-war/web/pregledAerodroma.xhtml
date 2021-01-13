@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"           
+      xmlns:p="http://primefaces.org/ui">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{radSAerodromima.autentificiraj()}"/>
+    </f:metadata>
+    <h:head>
+        <title>Pregled aerodroma</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./predložak.xhtml">
+            <ui:define name="naslov">              
+            </ui:define>
+            <ui:define name="top">
+            </ui:define>
+            <ui:define name="content">
+        <h:form>
+            <h:outputLabel value="#{p['pregledAerodroma.aerodrom']}"/>
+            <h:inputText value="#{radSAerodromima.icao}"/>
+            <h:commandButton value="#{p['pregledAerodroma.dodajAerodrom']}" action="#{radSAerodromima.dodajAerodromREST()}"/>
+            <br></br>
+        </h:form>
+        <p:dataTable id="tablica" value="#{radSAerodromima.listaAerodroma}" var="aero" 
+                     paginator="true" 
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}  " 
+                     rowsPerPageTemplate="5,10,15" 
+                     rows="5">
+            <p:column>
+                <f:facet name="header">ICAO</f:facet>
+                    #{aero.icao}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Naziv</f:facet>
+                    #{aero.naziv}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Država</f:facet>
+                    #{aero.drzava}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Lokacija</f:facet>
+                #{aero.lokacija.latitude} , 
+                #{aero.lokacija.longitude}
+            </p:column>
+            <p:column>
+                <f:facet name="header">Meteopodaci</f:facet>
+                <h:commandButton value="Dohvati" action="#{radSAerodromima.meteoPodaciSOAP(aero.icao)}"><f:ajax execute="@form" render="forma"/></h:commandButton>
+            </p:column>
+        </p:dataTable>
+        <h:form id="forma">
+            <h:outputLabel value="#{p['pregledAerodroma.temperatura']} #{radSAerodromima.temperatura}"/><br></br>
+            <h:outputLabel value="#{p['pregledAerodroma.vlaga']} #{radSAerodromima.vlaga}"/><br></br>
+            <h:outputLabel value="#{p['pregledAerodroma.tlak']} #{radSAerodromima.tlak}"/><br></br></h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

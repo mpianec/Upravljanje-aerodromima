@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://serveri.ws.mpianec.nwtis.foi.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://serveri.ws.mpianec.nwtis.foi.org/">
+
+<xs:element name="azurirajKorisnika" type="tns:azurirajKorisnika"/>
+
+<xs:element name="azurirajKorisnikaResponse" type="tns:azurirajKorisnikaResponse"/>
+
+<xs:element name="dodajKorisnika" type="tns:dodajKorisnika"/>
+
+<xs:element name="dodajKorisnikaResponse" type="tns:dodajKorisnikaResponse"/>
+
+<xs:element name="meteo" type="tns:meteo"/>
+
+<xs:element name="meteoResponse" type="tns:meteoResponse"/>
+
+<xs:element name="podaciOAvionima" type="tns:podaciOAvionima"/>
+
+<xs:element name="podaciOAvionimaResponse" type="tns:podaciOAvionimaResponse"/>
+
+<xs:element name="podaciOKorisniku" type="tns:podaciOKorisniku"/>
+
+<xs:element name="podaciOKorisnikuResponse" type="tns:podaciOKorisnikuResponse"/>
+
+<xs:element name="podaciOLetovima" type="tns:podaciOLetovima"/>
+
+<xs:element name="podaciOLetovimaResponse" type="tns:podaciOLetovimaResponse"/>
+
+<xs:element name="podaciOLetovimaString" type="tns:podaciOLetovimaString"/>
+
+<xs:element name="podaciOLetovimaStringResponse" type="tns:podaciOLetovimaStringResponse"/>
+
+<xs:element name="podaciOPoletjelima" type="tns:podaciOPoletjelima"/>
+
+<xs:element name="podaciOPoletjelimaResponse" type="tns:podaciOPoletjelimaResponse"/>
+
+<xs:element name="unosPodatakaAviona" type="tns:unosPodatakaAviona"/>
+
+<xs:element name="unosPodatakaAvionaResponse" type="tns:unosPodatakaAvionaResponse"/>
+
+<xs:complexType name="podaciOAvionima">
+<xs:sequence>
+<xs:element name="aerodrom_id" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOAvionimaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:avionLeti" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="avionLeti">
+<xs:sequence>
+<xs:element name="arrivalAirportCandidatesCount" type="xs:int"/>
+<xs:element name="callsign" type="xs:string" minOccurs="0"/>
+<xs:element name="departureAirportCandidatesCount" type="xs:int"/>
+<xs:element name="estArrivalAirport" type="xs:string" minOccurs="0"/>
+<xs:element name="estArrivalAirportHorizDistance" type="xs:int"/>
+<xs:element name="estArrivalAirportVertDistance" type="xs:int"/>
+<xs:element name="estDepartureAirport" type="xs:string" minOccurs="0"/>
+<xs:element name="estDepartureAirportHorizDistance" type="xs:int"/>
+<xs:element name="estDepartureAirportVertDistance" type="xs:int"/>
+<xs:element name="firstSeen" type="xs:int"/>
+<xs:element name="icao24" type="xs:string" minOccurs="0"/>
+<xs:element name="lastSeen" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meteo">
+<xs:sequence>
+<xs:element name="aerodrom_id" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meteoResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:meteoPodaci" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="meteoPodaci">
+<xs:sequence>
+<xs:element name="cloudsName" type="xs:string" minOccurs="0"/>
+<xs:element name="cloudsValue" type="xs:int"/>
+<xs:element name="humidityUnit" type="xs:string" minOccurs="0"/>
+<xs:element name="humidityValue" type="xs:float" minOccurs="0"/>
+<xs:element name="lastUpdate" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="precipitationMode" type="xs:string" minOccurs="0"/>
+<xs:element name="precipitationUnit" type="xs:string" minOccurs="0"/>
+<xs:element name="precipitationValue" type="xs:float" minOccurs="0"/>
+<xs:element name="pressureUnit" type="xs:string" minOccurs="0"/>
+<xs:element name="pressureValue" type="xs:float" minOccurs="0"/>
+<xs:element name="sunRise" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="sunSet" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="temperatureMax" type="xs:float" minOccurs="0"/>
+<xs:element name="temperatureMin" type="xs:float" minOccurs="0"/>
+<xs:element name="temperatureUnit" type="xs:string" minOccurs="0"/>
+<xs:element name="temperatureValue" type="xs:float" minOccurs="0"/>
+<xs:element name="visibility" type="xs:string" minOccurs="0"/>
+<xs:element name="weatherIcon" type="xs:string" minOccurs="0"/>
+<xs:element name="weatherNumber" type="xs:int"/>
+<xs:element name="weatherValue" type="xs:string" minOccurs="0"/>
+<xs:element name="windDirectionCode" type="xs:string" minOccurs="0"/>
+<xs:element name="windDirectionName" type="xs:string" minOccurs="0"/>
+<xs:element name="windDirectionValue" type="xs:float" minOccurs="0"/>
+<xs:element name="windSpeedName" type="xs:string" minOccurs="0"/>
+<xs:element name="windSpeedValue" type="xs:float" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="unosPodatakaAviona">
+<xs:sequence>
+<xs:element name="n" type="xs:int"/>
+<xs:element name="aerodrom_id" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="unosPodatakaAvionaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:avionLeti" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajKorisnika">
+<xs:sequence>
+<xs:element name="korisnik" type="tns:korisnik" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="korisnik">
+<xs:sequence>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:int"/>
+<xs:element name="ime" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="lozinka" type="xs:string" minOccurs="0"/>
+<xs:element name="prezime" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="dodajKorisnikaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOPoletjelima">
+<xs:sequence>
+<xs:element name="datumOd" type="xs:int"/>
+<xs:element name="datumDo" type="xs:int"/>
+<xs:element name="id" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOPoletjelimaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:avionLeti" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOLetovimaString">
+<xs:sequence>
+<xs:element name="datumOd" type="xs:int"/>
+<xs:element name="datumDo" type="xs:int"/>
+<xs:element name="icao" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOLetovimaStringResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOLetovima">
+<xs:sequence>
+<xs:element name="datumOd" type="xs:int"/>
+<xs:element name="datumDo" type="xs:int"/>
+<xs:element name="icao" type="xs:string" minOccurs="0"/>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOLetovimaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:avionLeti" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="azurirajKorisnika">
+<xs:sequence>
+<xs:element name="korisnik" type="tns:korisnik" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="azurirajKorisnikaResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOKorisniku">
+<xs:sequence>
+<xs:element name="korime" type="xs:string" minOccurs="0"/>
+<xs:element name="lozinka" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="podaciOKorisnikuResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:korisnik" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

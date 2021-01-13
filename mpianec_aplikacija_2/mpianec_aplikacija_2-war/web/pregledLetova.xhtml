@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"           
+      xmlns:p="http://primefaces.org/ui">
+    <f:metadata>
+        <f:event type="preRenderView" listener="#{radSAerodromima.autentificiraj()}"/>
+    </f:metadata>
+    <h:head>
+        <title>Pregled letova</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./predložak.xhtml">
+            <ui:define name="naslov">              
+            </ui:define>
+            <ui:define name="top">
+            </ui:define>
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGroup>
+                        <p:outputLabel for="datetime" value="#{p['pregledLetova.od']}"/>
+                        <p:calendar id="datetime" value="#{radSAerodromima.odVremena}" pattern="dd.MM.yyyy HH:mm:ss"/><br></br>
+                        <p:outputLabel for="datetime1" value="#{p['pregledLetova.do']}"/>
+                        <p:calendar id="datetime1" value="#{radSAerodromima.doVremena}" pattern="dd.MM.yyyy HH:mm:ss"/>
+                    </h:panelGroup><br></br>
+                    <p:outputLabel value="#{p['pregledAerodroma.aerodrom']}"/>
+                    <p:dataTable id="tablica" value="#{radSAerodromima.listaAerodroma}" var="aero" 
+                                 paginator="true" 
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}  " 
+                                 rowsPerPageTemplate="5,10,15" 
+                                 rows="5">
+                        <p:column>
+                            <f:facet name="header">ICAO</f:facet>
+                                #{aero.icao}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Naziv</f:facet>
+                                #{aero.naziv}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Država</f:facet>
+                                #{aero.drzava}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Lokacija</f:facet>
+                            #{aero.lokacija.latitude} , 
+                            #{aero.lokacija.longitude}
+                        </p:column>
+                        <p:column>
+                            <h:commandButton value="Dohvati avione" action="#{radSAerodromima.dohvatiAvioneSOAP(aero.icao)}"><f:ajax execute="@form" render="tablica2"/></h:commandButton>
+                        </p:column>
+                    </p:dataTable><br></br>
+                    <p:outputLabel value="#{p['pregledLetova.avioni']}"/>
+                    <h:panelGrid id='tablica2'>
+                        <p:dataTable value="#{radSAerodromima.listaAvionVrijeme}" var="avion" 
+                                     paginator="true" 
+                                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}  " 
+                                     rowsPerPageTemplate="5,10,15" 
+                                     rows="5">
+                            <p:column>
+                                <f:facet name="header">ICAO</f:facet>
+                                    #{avion.icao24}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Znak</f:facet>
+                                    #{avion.callsign}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Polazišni</f:facet>
+                                    #{avion.estDepartureAirport}
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Odredišni</f:facet>
+                                    #{avion.estArrivalAirport}
+                            </p:column>           
+                            <p:column>
+                                <f:facet name="header">Početno vrijeme</f:facet>
+                                    #{avion.firstSeen}
+                            </p:column>    
+                            <p:column>
+                                <f:facet name="header">Dolazak</f:facet>
+                                    #{avion.lastSeen}
+                            </p:column>    
+                            <p:column>
+                                <h:commandButton value="Dohvati letove" action="#{radSAerodromima.dohvatiLetoveSOAP(avion.icao24)}"><f:ajax execute="@form" render="tablica3"/></h:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                        <h:outputLabel value='#{radSAerodromima.poruka}'/>
+                    </h:panelGrid>
+                    <p:outputLabel value="#{p['pregledLetova.letovi']}"/>
+                    <p:dataTable id="tablica3" value="#{radSAerodromima.listaLetovaVrijeme}" var="aero" 
+                                 paginator="true" 
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks}  {NextPageLink} {LastPageLink} {RowsPerPageDropdown}  " 
+                                 rowsPerPageTemplate="5,10,15" 
+                                 rows="5">
+                        <p:column>
+                            <f:facet name="header">ICAO</f:facet>
+                                #{aero.icao24}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Znak</f:facet>
+                                #{aero.callsign}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Polazišni</f:facet>
+                                #{aero.estDepartureAirport}
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">Odredišni</f:facet>
+                                #{aero.estArrivalAirport}
+                        </p:column>  
+                        <p:column>
+                            <f:facet name="header">Početno vrijeme</f:facet>
+                                #{aero.firstSeen}
+                        </p:column>    
+                        <p:column>
+                            <f:facet name="header">Dolazak</f:facet>
+                                #{aero.lastSeen}
+                        </p:column> 
+                    </p:dataTable><br></br>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
